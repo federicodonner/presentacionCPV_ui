@@ -1,0 +1,37 @@
+{
+  "name": "midosis_ui",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build"
+  },
+  "author": "Federico Donner",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/federicodonner/medicina_ui/issues"
+  },
+  "devDependencies": {
+    "react-scripts": "^3.4.3"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "dependencies": {
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1",
+    "react-router-dom": "^5.2.0",
+    "react-select": "^3.1.0",
+    "typescript": "^3.9.7"
+  }
+}
