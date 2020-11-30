@@ -12,8 +12,6 @@ class Home extends React.Component {
   };
 
   componentDidMount() {
-    console.log("estoy en home");
-
     var pusher = new Pusher("57e880a09cb967a7829c", {
       cluster: "us2",
     });
@@ -43,11 +41,9 @@ class Home extends React.Component {
             </div>
           )}
           {this.state && !this.state.loader && (
-            <>
-              <div className="content">
-                <Router />
-              </div>
-            </>
+            <div className="content">
+              <Router />
+            </div>
           )}
         </div>
       </div>

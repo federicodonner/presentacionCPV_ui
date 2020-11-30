@@ -5,13 +5,11 @@ class Inicio extends React.Component {
     userInfo: {},
   };
 
-  navegarAUno = () => {
-    this.props.history.push({ pathname: "pregunta1" });
+  avanzar = () => {
+    this.props.history.push({ pathname: "registro" });
   };
 
-  componentDidMount() {
-    console.log("estoy en inicio");
-  }
+  componentDidMount() {}
 
   // prende el loader antes de cargar el componente
   constructor(props) {
@@ -20,7 +18,18 @@ class Inicio extends React.Component {
   }
 
   render() {
-    return <div>Estoy en Inicio</div>;
+    return (
+      <>
+        <div className="titulo master">CPV</div>
+        <div className="instrucciones">
+          Ajustá el tamaño y zoom del navegador para que coincida con el borde
+          rojo. Luego movvelo al espacio designado en la presentación.
+        </div>
+        <div className="boton" onClick={this.avanzar}>
+          Ingresar
+        </div>
+      </>
+    );
   }
 }
 
