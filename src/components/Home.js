@@ -1,5 +1,4 @@
 import React from "react";
-import Pusher from "pusher-js";
 import Router from "./Router";
 
 class Home extends React.Component {
@@ -11,16 +10,7 @@ class Home extends React.Component {
     window.location.assign("/pregunta" + pregunta);
   };
 
-  componentDidMount() {
-    var pusher = new Pusher("57e880a09cb967a7829c", {
-      cluster: "us2",
-    });
-
-    var channel = pusher.subscribe("my-channel");
-    channel.bind("my-event", (data) => {
-      this.navegarAPregunta(data.pregunta);
-    });
-  }
+  componentDidMount() {}
 
   // prende el loader antes de cargar el componente
   constructor(props) {

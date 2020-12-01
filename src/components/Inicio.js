@@ -26,7 +26,7 @@ class Inicio extends React.Component {
           rojo. Luego movvelo al espacio designado en la presentación.
         </div>
         <div className="boton" onClick={this.avanzar}>
-          Ingresar
+          Listo
         </div>
       </>
     );

@@ -37,7 +37,7 @@ body {
 .content {
   margin-left: auto;
   margin-right: auto;
-  width: 400px;
+  width: 360px;
   height: 600px;
   border: solid 5px red;
   font-family: "Caveat", cursive;
@@ -112,6 +112,7 @@ input {
   margin-top: 10px;
   cursor: pointer;
   color: white;
+  font-size: 32pt;
 }
 
 html,

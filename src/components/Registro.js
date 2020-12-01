@@ -1,4 +1,5 @@
 import React from "react";
+import { accederAPI, guardarEnLS } from "../utils/fetchFunctions";
 
 class Registro extends React.Component {
   nombreRef = React.createRef();
@@ -9,12 +10,33 @@ class Registro extends React.Component {
       alert("Debes ingresar un nombre");
       return false;
     }
-    console.log(this.state.participar);
+    var data = {
+      nombre: this.nombreRef.current.value,
+      participa: this.state.participa + 1 - 1,
+    };
+    accederAPI(
+      "POST",
+      "registro",
+      data,
+      this.exitoRegistro,
+      this.errorRegistro
+    );
   };
 
-  toggleParticipar = () => {
-    var participar = this.state.participar;
-    this.setState({ participar: !participar });
+  errorRegistro = (error) => {
+    alert(error.detail);
+  };
+
+  // Cuando el usuario se registra, la API confirma el número de usuario
+  // Se guarda en LS para saber si le toca ser uno de los participantes
+  exitoRegistro = (respuesta) => {
+    guardarEnLS("presentacionCPV", respuesta.id);
+    this.props.history.push({ pathname: "actividad" });
+  };
+
+  toggleParticipa = () => {
+    var participar = this.state.participa;
+    this.setState({ participa: !participar });
   };
 
   componentDidMount() {
@@ -35,8 +57,8 @@ class Registro extends React.Component {
           Nombre:
           <input type="text" ref={this.nombreRef} />
           Tengo micrófono y quiero participar:
-          <div className="checkbox" onClick={this.toggleParticipar}>
-            {this.state.participar && <span>X</span>}
+          <div className="checkbox" onClick={this.toggleParticipa}>
+            {this.state.participa && <span>X</span>}
           </div>
         </div>
         <div className="boton" onClick={this.avanzar}>

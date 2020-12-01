@@ -2,7 +2,7 @@ import React from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import Inicio from "./Inicio";
 import Registro from "./Registro";
-import Pregunta1 from "./Pregunta1";
+import Actividad from "./Actividad";
 import NotFound from "./NotFound";
 
 class Router extends React.Component {
@@ -12,7 +12,7 @@ class Router extends React.Component {
         <Switch>
           <Route exact path="/" component={Inicio} />
           <Route exact path="/registro" component={Registro} />
-          <Route exact path="/pregunta1" component={Pregunta1} />
+          <Route exact path="/actividad" component={Actividad} />
           <Route component={NotFound} />
         </Switch>
       </BrowserRouter>
