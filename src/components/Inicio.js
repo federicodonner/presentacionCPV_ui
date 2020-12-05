@@ -1,4 +1,5 @@
 import React from "react";
+import { leerDesdeLS } from "../utils/fetchFunctions";
 
 class Inicio extends React.Component {
   state: {
@@ -9,7 +10,12 @@ class Inicio extends React.Component {
     this.props.history.push({ pathname: "registro" });
   };
 
-  componentDidMount() {}
+  componentDidMount() {
+    // Verifica que no se haya logueado antes
+    if (leerDesdeLS("presentacionCPV")) {
+      this.props.history.push({ pathname: "actividad" });
+    }
+  }
 
   // prende el loader antes de cargar el componente
   constructor(props) {

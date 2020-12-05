@@ -55,7 +55,7 @@ class Registro extends React.Component {
         <div className="titulo">Registro</div>
         <div className="instrucciones">
           Nombre:
-          <input type="text" ref={this.nombreRef} />
+          <input type="text" className="inputText" ref={this.nombreRef} />
           Tengo micrófono y quiero participar:
           <div className="checkbox" onClick={this.toggleParticipa}>
             {this.state.participa && <span>X</span>}
