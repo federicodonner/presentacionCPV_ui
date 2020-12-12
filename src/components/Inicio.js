@@ -29,7 +29,7 @@ class Inicio extends React.Component {
         <div className="titulo master">CPV</div>
         <div className="instrucciones">
           Ajustá el tamaño y zoom del navegador para que coincida con el borde
-          rojo. Luego movvelo al espacio designado en la presentación.
+          rojo. Luego movelo al espacio designado en la presentación.
         </div>
         <div className="boton" onClick={this.avanzar}>
           Listo

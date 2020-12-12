@@ -1,6 +1,6 @@
 body {
-  color: #aab1b7;
-  background-color: black;
+  color: #333;
+  background-color: white;
 }
 
 .scrollable {
@@ -39,18 +39,22 @@ body {
   margin-right: auto;
   width: 360px;
   height: 600px;
-  border: solid 5px red;
-  font-family: "Caveat", cursive;
+  border: solid 5px #8e8e8e;
+  font-family: "Courier Prime", monospace;
   padding: 20px;
   text-align: center;
+  overflow: auto;
 }
 
 .titulo {
   margin-left: auto;
   margin-right: auto;
-  color: red;
   font-size: 50pt;
   width: fit-content;
+  background-image: url(/images/fondo-celeste.png);
+  margin-bottom: 20px;
+  background-repeat: no-repeat;
+  background-position: bottom;
 }
 
 .titulo.master {
@@ -59,7 +63,6 @@ body {
 
 .instrucciones {
   margin-top: 30px;
-  color: red;
   font-size: 21pt;
   margin-bottom: 60px;
 }
@@ -69,9 +72,13 @@ body {
 }
 
 .boton {
-  color: #02ff00;
-  font-size: 35pt;
+  font-size: 28pt;
   cursor: pointer;
+  background-image: url(/images/fondo-verde.png);
+  margin-bottom: 20px;
+  background-size: 67%;
+  background-repeat: no-repeat;
+  background-position: bottom;
 }
 
 .inputText {
@@ -82,12 +89,10 @@ body {
   padding: 10px;
   margin-top: 10px;
   font-size: 21pt;
-  background-color: #333;
-  color: white;
-  border: solid 1px red;
+  border: solid 3px #8e8e8e;
   border-radius: 10px;
   margin-bottom: 30px;
-  font-family: "Caveat", cursive;
+  font-family: "Courier Prime", monospace;
 }
 
 .container {
@@ -106,8 +111,7 @@ body {
 .checkbox {
   height: 50px;
   width: 50px;
-  background-color: #333;
-  border: solid 1px red;
+  border: solid 3px #8e8e8e;
   border-radius: 10px;
   margin-left: auto;
   margin-right: auto;
@@ -115,13 +119,20 @@ body {
   margin-bottom: 30px;
   margin-top: 10px;
   cursor: pointer;
-  color: white;
   font-size: 32pt;
 }
 
+.tituloPregunta {
+  background-image: url(/images/fondo-celeste.png);
+  font-size: 20pt;
+  margin-bottom: 40px;
+  background-size: 67%;
+  background-repeat: no-repeat;
+  background-position: bottom;
+}
+
 .textoPregunta {
-  font-size: 27pt;
-  color: red;
+  font-size: 17pt;
   margin-bottom: 20px;
   line-height: 1;
 }
@@ -136,16 +147,75 @@ body {
 }
 
 .radioLabel {
-  font-size: 20pt;
+  font-size: 17pt;
   margin-left: 9px;
-  color: yellow;
   margin-bottom: 15px;
+  margin-bottom: 20px;
+  background-size: 67%;
+  background-repeat: no-repeat;
+  background-position: inherit;
+}
+
+.radioLabel.uno {
+  background-image: url(/images/fondo-rosado.png);
+}
+
+.radioLabel.dos {
+  background-image: url(/images/fondo-naranja.png);
+}
+
+.radioLabel.tres {
+  background-image: url(/images/fondo-amarillo.png);
 }
 
 .respuesta {
-  color: #02ff00;
-  font-size: 25pt;
+  font-size: 15pt;
   line-height: 1;
+  background-image: url(/images/fondo-verde.png);
+  margin-bottom: 20px;
+  background-repeat: no-repeat;
+  background-position: top;
+}
+
+.guion {
+  font-size: 17pt;
+}
+
+.newLine {
+  display: block;
+}
+
+.resaltado {
+  margin-bottom: 10px;
+  background-image: url(/images/fondo-amarillo.png);
+  margin-bottom: 15px;
+  margin-bottom: 20px;
+  background-size: 67%;
+  background-repeat: no-repeat;
+  background-position: inherit;
+  font-weight: 800;
+}
+
+.noResaltado {
+  color: #bbb;
+  font-size: 12pt;
+  margin-bottom: 10px;
+}
+
+.cartasTitulo {
+  background-image: url(/images/fondo-naranja.png);
+  margin-bottom: 20px;
+  background-size: 67%;
+  background-repeat: no-repeat;
+  background-position: inherit;
+  font-size: 16pt;
+}
+.cartas {
+  margin-top: 40px;
+}
+.carta {
+  max-width: 80%;
+  margin-top: 10px;
 }
 
 html,

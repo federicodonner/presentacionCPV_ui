@@ -6,7 +6,12 @@ class Actividad extends React.Component {
   state: {};
 
   esperando = () => {
-    this.setState({ esperando: true, actividad: null });
+    this.setState({
+      esperando: true,
+      actividad: null,
+      respuestaIngresada: false,
+      opcionSeleccionada: null,
+    });
   };
 
   actividad = (data) => {
@@ -17,7 +22,28 @@ class Actividad extends React.Component {
       actoresProcesado.push(actor.id);
     });
     data.actoresProcesado = actoresProcesado;
-    this.setState({ actividad: data, esperando: false });
+
+    var dialogoProcesadoUno = data.guion_jugador_uno.split("\r\n");
+    var dialogoProcesadoDos = data.guion_jugador_dos.split("\r\n");
+    var dialogoGeneral = [];
+    for (
+      var i = 0;
+      i < Math.max(dialogoProcesadoUno.length, dialogoProcesadoDos.length);
+      i++
+    ) {
+      dialogoGeneral.push(dialogoProcesadoUno[i]);
+      dialogoGeneral.push(dialogoProcesadoDos[i]);
+    }
+    data.dialogoGeneral = dialogoGeneral;
+
+    data.cartasProcesadas = data.cartas.split("\r\n");
+
+    this.setState({
+      actividad: data,
+      esperando: false,
+      respuestaIngresada: false,
+      opcionSeleccionada: null,
+    });
   };
 
   // Funnción ejecutada cuando selecciona un radio
@@ -72,20 +98,63 @@ class Actividad extends React.Component {
         {!this.state.esperando &&
           this.state.actividad.actoresProcesado.indexOf(
             this.state.numeroParticipante
-          ) == 0 && <span>soy actor el primer actor</span>}
+          ) == 0 && (
+            <span>
+              <div className="tituloPregunta">Sos el jugador A</div>
+              <div className="guion">
+                {this.state.actividad.dialogoGeneral.map((linea, i) => (
+                  <span
+                    key={i}
+                    className={
+                      i % 2 == 0 ? "newLine resaltado" : "newLine noResaltado"
+                    }
+                  >
+                    {linea}
+                  </span>
+                ))}
+              </div>
+            </span>
+          )}
         {!this.state.esperando &&
           this.state.actividad.actoresProcesado.indexOf(
             this.state.numeroParticipante
-          ) == 1 && <span>soy actor el segundo actor</span>}
+          ) == 1 && (
+            <span>
+              <div className="tituloPregunta">Sos el jugador N</div>
+              <div className="guion">
+                {this.state.actividad.dialogoGeneral.map((linea, i) => (
+                  <span
+                    key={i}
+                    className={
+                      i % 2 == 1 ? "newLine resaltado" : "newLine noResaltado"
+                    }
+                  >
+                    {linea}
+                  </span>
+                ))}
+              </div>
+            </span>
+          )}
         {!this.state.esperando &&
           this.state.actividad.actoresProcesado.indexOf(
             this.state.numeroParticipante
-          ) == 2 && <span>Soy el juez</span>}
+          ) == 2 && (
+            <span>
+              <div className="tituloPregunta">Sos el Juez</div>
+              <div className="guion">
+                Prestá atención a la situación porque vas a tener que dar un
+                ruling cuando te llamen.
+              </div>
+            </span>
+          )}
         {!this.state.esperando &&
           this.state.actividad.actoresProcesado.indexOf(
             this.state.numeroParticipante
           ) == -1 && (
             <div>
+              <div className="tituloPregunta">
+                Situación {this.state.actividad.actividad_numero}
+              </div>
               <div className="textoPregunta">
                 {this.state.actividad.pregunta}
               </div>
@@ -99,7 +168,7 @@ class Actividad extends React.Component {
                     className="radioButton"
                     onClick={this.seleccionarRadio(1)}
                   />
-                  <label htmlFor="opcionUno" className="radioLabel">
+                  <label htmlFor="opcionUno" className="radioLabel uno">
                     {this.state.actividad.opcion_uno}
                   </label>
                 </div>
@@ -112,7 +181,7 @@ class Actividad extends React.Component {
                     className="radioButton"
                     onClick={this.seleccionarRadio(2)}
                   />
-                  <label htmlFor="opcionDos" className="radioLabel">
+                  <label htmlFor="opcionDos" className="radioLabel dos">
                     {this.state.actividad.opcion_dos}
                   </label>
                 </div>
@@ -125,7 +194,7 @@ class Actividad extends React.Component {
                     className="radioButton"
                     onClick={this.seleccionarRadio(3)}
                   />
-                  <label htmlFor="opcionTres" className="radioLabel">
+                  <label htmlFor="opcionTres" className="radioLabel tres">
                     {this.state.actividad.opcion_tres}
                   </label>
                 </div>
@@ -150,6 +219,17 @@ class Actividad extends React.Component {
               )}
             </div>
           )}
+        {this.state && this.state.actividad && !this.state.actividad.esperando && (
+          <div className="cartas">
+            <div>----</div>
+            <span className="cartasTitulo">Cartas involucradas</span>
+            {this.state &&
+              this.state.actividad &&
+              this.state.actividad.cartasProcesadas.map((carta, i) => (
+                <img key={i} className="carta" src={carta} />
+              ))}
+          </div>
+        )}
       </>
     );
   }
